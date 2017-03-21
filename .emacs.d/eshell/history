@@ -1,0 +1,97 @@
+cd ..
+cd ..
+cd GKShared/
+npm link
+cd ..
+cd GitKraken
+npm link gitkraken-shared
+exit
+cd ..
+cd ..
+clear
+
+script/run
+cd ..
+script/run
+
+asdf
+yes
+find-file RefActions-spec.js
+projectile-find-file RefActions-spec.js
+rename-buffer "script/run"
+cd repos/GitKraken
+script/run
+script/run
+script/run
+ls -al > #<buffer some-notes.org>
+cd ../repos/GitKraken/
+git commit -am "Continue hooking up onClick to getTaskCommits"
+exit
+cd Desktop/
+ls
+(ls)
+(cd)
+(cd  ~)
+(cd "~")
+(cd "Desktop")
+(cd "Desktop")
+(clear)
+(reset)
+elm
+elm
+mkdir elmGame
+cd elmGame
+cls
+clear
+
+clear
+
+clear
+
+clear
+
+find-file Main.elm
+elm-package install evancz/elm-html
+elm-package install elm-lang/html
+elm-package install elm-lang/html
+exit
+elm-package install elm-lang/html
+elm
+exit
+cd ~/Desktop
+mkdir puxTutorial
+cd puxTutorial/
+pulp init
+cd ..
+rm -rf puxTutorial/
+mkdir pux-tutorial
+cd pux-tutorial/
+pulp init
+pulp install purescript-pux
+bower install purescript-pux
+find-file "src/Main.purs"
+cd LIhsP/
+pulp init
+cd ..
+cd ..
+find-file config.json
+cd ..
+node 
+ls
+node script.js 
+node script.js 
+node script.js 
+node script.js 
+cd ~/Desktop
+node script.js 
+node script.js 
+clear
+
+clear
+
+node script.js 
+node script.js 
+node script.js 
+node script.js 
+node script.js 
+node script.js 
