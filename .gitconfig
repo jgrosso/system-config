@@ -1,0 +1,12 @@
+[user]
+	email = jgrosso1@asu.edu
+	name = Joshua Grosso
+[alias]
+	co = checkout
+	cm = commit -am
+	br = branch
+	st = status
+[push]
+	default = simple
+[core]
+	editor = vim
