@@ -91,3 +91,7 @@ compinit
 
 alias hilite="highlight -Oxterm256"
 alias ppJSON="ruby -r json -e 'jj JSON.parse gets' | hilite -SJSON"
+
+function ultradiff {
+    wdiff -n "$@" | colordiff | less
+}
