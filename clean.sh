@@ -2,6 +2,6 @@
 
 rm ~/.vimrc
 rm ~/.zshrc
-rm ~/.oh-my-zsh/custom
-rm ~/.emacs.d
+rm -rf ~/.oh-my-zsh/custom
+rm -rf ~/.emacs.d
 rm ~/.gitconfig
