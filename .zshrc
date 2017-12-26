@@ -91,3 +91,10 @@ compinit
 
 alias hilite="highlight -Oxterm256"
 alias ppJSON="ruby -r json -e 'jj JSON.parse gets' | hilite -SJSON"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export DEFAULT_USER=`whoami`
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'

@@ -171,10 +171,6 @@ plugged_in() {
   fi
 }
 
-battery_charge() {
-  echo `~/battery_charge.py`
-}
-
    TOP_SEP=('╔' '┏' '╭' '╱' '╿' '▛')
 BOTTOM_SEP=('╚' '┗' '╰' '╲' '╽' '▙')
 
@@ -183,8 +179,6 @@ CUR_SEP=3
 PROMPT_INDICATOR=('»' '⇒' '⇨')
 
 CUR_PROMPT_INDICATOR=2
-
-RPROMPT='$(plugged_in)$(battery_charge)'
 
 # PROMPT='$TOP_SEP[CUR_SEP] %{%f%b%k%}$(build_prompt)
 # $BOTTOM_SEP[CUR_SEP]$PROMPT_INDICATOR[CUR_PROMPT_INDICATOR] '

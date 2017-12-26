@@ -1,7 +1,11 @@
 #!/bin/sh
 
 rm ~/.vimrc
+
 rm ~/.zshrc
 rm -rf ~/.oh-my-zsh/custom
-rm -rf ~/.emacs.d
+
+rm -rf ~/.emacs.d/init.el
+rm ~/.spacemacs
+
 rm ~/.gitconfig
