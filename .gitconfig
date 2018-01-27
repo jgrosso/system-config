@@ -6,6 +6,8 @@
 	cm = commit -am
 	br = branch
 	st = status
+	amend = commit -a --amend --no-edit
+	forcepush = push --force
 [push]
 	default = simple
 [core]
