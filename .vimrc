@@ -1,9 +1,28 @@
+" https://github.com/Shougo/dein.vim
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/bundle')
+  call dein#begin('~/.vim/bundle')
+  
+  call dein#add('~/.vim/bundle/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('mhartington/nvim-typescript')
+  call dein#add('rust-lang/rust', { 'ft': ['rs'] })
+  call dein#add('HerringtonDarkholme/yats.vim')
+
+  call dein#end()
+  call dein#save_state()
+endif
+
 syntax enable
 
-set tabstop=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
-filetype indent on
+filetype plugin indent on
 
 set number
 
@@ -29,7 +48,7 @@ nnoremap k gk
 
 nnoremap gV `[v`]
 
-inoremap jk <esc>
+inoremap fd <esc>
 
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -38,3 +57,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
 set modelines=1
+
+au VimLeave * set guicursor=a:ver1-blinkon0
+
+let g:deoplete#enable_at_startup = 1

@@ -51,7 +51,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions git zsh-syntax-highlighting)
+plugins=(colored-man-pages git rust zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,8 +81,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -91,7 +91,23 @@ compinit
 
 alias hilite="highlight -Oxterm256"
 alias ppJSON="ruby -r json -e 'jj JSON.parse gets' | hilite -SJSON"
+alias vim="nvim"
 
 function ultradiff {
     wdiff -n "$@" | colordiff | less
+}
+
+function load-nvm {
+  . /usr/local/opt/nvm/nvm.sh
+}
+
+# https://dev.to/ricardomol/note-taking-from-the-command-line-156
+function notes {
+  echo $1 >> $HOME/notes.md
+}
+
+# https://superuser.com/a/292660/251452
+function set-title {
+  DISABLE_AUTO_TITLE="true"
+  echo -ne "\e]1;" $* "\a"
 }

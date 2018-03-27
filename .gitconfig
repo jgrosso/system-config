@@ -1,10 +1,12 @@
 [user]
-	email = jgrosso1@asu.edu
+	email = joshuag@axosoft.com
 	name = Joshua Grosso
 [alias]
+  amend = commit -a --amend --no-edit --reset-author
+	br = branch
 	co = checkout
 	cm = commit -am
-	br = branch
+  forcepush = push --force
 	st = status
 [push]
 	default = simple
