@@ -1,7 +1,9 @@
 syntax enable
+colorscheme monokai
 
 set tabstop=4
-set softtabstop=4
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 filetype indent on
 
@@ -38,3 +40,8 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
 set modelines=1
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>

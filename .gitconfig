@@ -8,6 +8,7 @@
 	st = status
 	amend = commit -a --amend --no-edit
 	forcepush = push --force
+	wipe = reset --hard HEAD
 [push]
 	default = simple
 [core]
