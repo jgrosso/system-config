@@ -1,5 +1,6 @@
 #!/bin/sh
 
+rm ~/.config/nvim/init.vim
 rm ~/.vimrc
 
 rm ~/.zshrc
