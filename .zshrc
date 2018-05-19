@@ -95,3 +95,7 @@ alias ppJSON="ruby -r json -e 'jj JSON.parse gets' | hilite -SJSON"
 export DEFAULT_USER=`whoami`
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
+
+mydiff() {
+  wdiff -n "$@" | colordiff
+}
