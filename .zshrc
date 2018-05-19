@@ -51,7 +51,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(colored-man-pages git rust zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,6 +89,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 autoload -Uz compinit
 compinit
 
+alias vim="nvim"
 alias hilite="highlight -Oxterm256"
 alias ppJSON="ruby -r json -e 'jj JSON.parse gets' | hilite -SJSON"
 
@@ -96,6 +97,12 @@ export DEFAULT_USER=`whoami`
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
 
-mydiff() {
+function mydiff {
   wdiff -n "$@" | colordiff
+}
+
+# https://superuser.com/a/292660/251452
+function set-title {
+  DISABLE_AUTO_TITLE="true"
+  echo -ne "\e]1;" $* "\a"
 }

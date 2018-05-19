@@ -1,11 +1,11 @@
 syntax enable
 colorscheme monokai
 
-set tabstop=4
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-filetype indent on
+filetype plugin indent on
 
 set number
 
@@ -45,3 +45,5 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+au VimLeave * set guicursor=a:ver1-blinkon0
