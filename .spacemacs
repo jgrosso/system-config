@@ -35,6 +35,7 @@ values."
      clojure
      csharp
      csv
+     dash
      emacs-lisp
      git
      go
@@ -53,6 +54,7 @@ values."
      ruby-on-rails
      rust
      (shell :variables shell-default-shell 'eshell)
+     spotify
      syntax-checking
      yaml
      )
