@@ -52,7 +52,7 @@ values."
      purescript
      ruby-on-rails
      rust
-     shell
+     (shell :variables shell-default-shell 'eshell)
      syntax-checking
      yaml
      )
@@ -388,6 +388,8 @@ you should place your code here."
   (global-nlinum-mode)
   (global-subword-mode)
   (setq create-lockfiles nil)
+  (setq vc-follow-symlinks t)
+  (setq mouse-wheel-progressive-speed nil)
 
   (setup-autosave)
   (setup-csharp)
@@ -419,6 +421,8 @@ you should place your code here."
                      'vertical
                      (round (* 0.3 (frame-height)))))
                   (cancel-timer timer))))))))))
+
+  (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-color")))
 
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
   )
