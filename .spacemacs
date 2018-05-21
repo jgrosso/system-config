@@ -43,7 +43,6 @@ values."
      (haskell :variables haskell-completion-backend 'intero)
      helm
      html
-     jekyll
      markdown
      mu4e
      nlinum
