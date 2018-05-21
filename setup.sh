@@ -15,8 +15,7 @@ ln -s "$DIR/.vimrc" ~/.vimrc
 ln -s "$DIR/.zshrc" ~/.zshrc
 
 # Spacemacs
-mkdir -p ~/.emacs.d
-ln -s "$DIR/.emacs.d/init.el" ~/.emacs.d/init.el
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s "$DIR/.spacemacs" ~/.spacemacs
 
 # Git

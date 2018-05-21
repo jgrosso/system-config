@@ -5,7 +5,7 @@ rm ~/.vimrc
 
 rm ~/.zshrc
 
-rm -rf ~/.emacs.d/init.el
+rm -rf ~/.emacs.d
 rm ~/.spacemacs
 
 rm ~/.gitconfig
