@@ -388,6 +388,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
          (delta (- n current-value)))
     (window-resize window delta (eq orientation 'horizontal))))
 
+(defun setup-theme ()
+  (setq theming-modifications
+        '((flatland (markdown-header-face-1 :inherit markdown-header-face :height 1.5)
+                    (markdown-header-face-2 :inherit markdown-header-face :height 1.3)
+                    (markdown-header-face-3 :inherit markdown-header-face :height 1.1))))
+  (spacemacs/update-theme)
+  )
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -409,6 +417,7 @@ you should place your code here."
   (setup-mu4e)
   (setup-purescript)
   (setup-rust)
+  (setup-theme)
 
   (add-hook
    'compilation-mode-hook
@@ -433,7 +442,6 @@ you should place your code here."
                      'vertical
                      (round (* 0.3 (frame-height)))))
                   (cancel-timer timer))))))))))
-
 
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
   )
