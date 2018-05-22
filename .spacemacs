@@ -324,6 +324,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-hook 'csharp-mode-hook 'flycheck-mode)
   )
 
+(defun setup-eshell ()
+  (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-color")))
+  )
+
 (defun setup-haskell ()
   (setq hindent-reformat-buffer-on-save t)
 
@@ -400,6 +404,7 @@ you should place your code here."
 
   (setup-autosave)
   (setup-csharp)
+  (setup-eshell)
   (setup-haskell)
   (setup-mu4e)
   (setup-purescript)
@@ -429,7 +434,6 @@ you should place your code here."
                      (round (* 0.3 (frame-height)))))
                   (cancel-timer timer))))))))))
 
-  (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-color")))
 
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
   )
