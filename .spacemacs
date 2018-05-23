@@ -396,6 +396,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (spacemacs/update-theme)
   )
 
+;; Adapted from https://emacs.stackexchange.com/a/16877/13471.
+(defun get-buffers-with-major-mode (needle)
+  "Get a list of buffers with the specified major mode (or a descendant) enabled."
+  (require 'seq)
+
+  (seq-filter (lambda (buffer)
+                (with-current-buffer buffer
+                  (derived-mode-p needle)))
+              (buffer-list))
+  )
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -428,17 +439,17 @@ you should place your code here."
             0
             0.05
             (lambda ()
-              (let ((cargo-compilation-window (get-buffer-window "*Cargo Run*")))
-                (when cargo-compilation-window
-                  ;; Try setting either the height or the width (if more than two windows are visible, this will break down since neither call will error).
+              (dolist (compilation-buffer (get-buffers-with-major-mode 'compilation-mode))
+                (let ((compilation-window (get-buffer-window compilation-buffer)))
+                  ;; Try setting either the height or the width (if more than two windows are visible, this may break down).
                   (ignore-errors
                     (set-window-dimension
-                     cargo-compilation-window
+                     compilation-window
                      'horizontal
                      (round (* 0.25 (frame-width)))))
                   (ignore-errors
                     (set-window-dimension
-                     cargo-compilation-window
+                     compilation-window
                      'vertical
                      (round (* 0.3 (frame-height)))))
                   (cancel-timer timer))))))))))
