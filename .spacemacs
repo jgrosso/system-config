@@ -372,6 +372,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq message-sendmail-f-is-evil 't)
   )
 
+(defun setup-org ()
+  (plist-put org-format-latex-options :scale 1.8)
+  )
+
 (defun setup-purescript ()
   (add-hook 'purescript-mode-hook 'turn-on-purescript-unicode-input-method)
   )
@@ -386,13 +390,19 @@ before packages are loaded. If you are unsure, you should try in setting them in
                             (window-body-width window)
                           (window-body-height window)))
          (delta (- n current-value)))
-    (window-resize window delta (eq orientation 'horizontal))))
+    (window-resize window delta (eq orientation 'horizontal)))
+  )
 
 (defun setup-theme ()
   (setq theming-modifications
         '((flatland (markdown-header-face-1 :inherit markdown-header-face :height 1.5)
                     (markdown-header-face-2 :inherit markdown-header-face :height 1.3)
-                    (markdown-header-face-3 :inherit markdown-header-face :height 1.1))))
+                    (markdown-header-face-3 :inherit markdown-header-face :height 1.1)
+                    (org-level-1 :inherit org-level-1 :height 1.5)
+                    (org-level-2 :inherit org-level-2 :height 1.4)
+                    (org-level-3 :inherit org-level-3 :height 1.3)
+                    (org-level-4 :inherit org-level-4 :height 1.1)
+                    (org-level-5 :inherit org-level-5 :height 1.1))))
   (spacemacs/update-theme)
   )
 
@@ -405,6 +415,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
                 (with-current-buffer buffer
                   (derived-mode-p needle)))
               (buffer-list))
+  )
+
+(defun setup-visual-line-movement ()
+  (global-visual-line-mode t)
+  (evil-define-minor-mode-key 'motion 'visual-line-mode "j" 'evil-next-visual-line)
+  (evil-define-minor-mode-key 'motion 'visual-line-mode "k" 'evil-previous-visual-line)
   )
 
 (defun dotspacemacs/user-config ()
@@ -420,12 +436,15 @@ you should place your code here."
   (setq create-lockfiles nil)
   (setq vc-follow-symlinks t)
   (setq mouse-wheel-progressive-speed nil)
+  (spacemacs/toggle-maximize-frame-on)
+  (setup-visual-line-movement)
 
   (setup-autosave)
   (setup-csharp)
   (setup-eshell)
   (setup-haskell)
   (setup-mu4e)
+  (setup-org)
   (setup-purescript)
   (setup-rust)
   (setup-theme)
