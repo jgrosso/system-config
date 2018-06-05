@@ -316,7 +316,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   )
 
-(defun setup-autosave ()
+(defun setup-temp-file-creation ()
+  (setq create-lockfiles nil)
   ;; https://www.emacswiki.org/emacs/AutoSave
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
   )
@@ -419,27 +420,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
               (buffer-list))
   )
 
-(defun setup-visual-line-movement ()
+(defun setup-word-wrap ()
   (global-visual-line-mode t)
   (evil-define-minor-mode-key 'motion 'visual-line-mode "j" 'evil-next-visual-line)
   (evil-define-minor-mode-key 'motion 'visual-line-mode "k" 'evil-previous-visual-line)
   )
 
-(defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration.
-This is the place where most of your configurations should be done. Unless it is
-explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
-  (setq-default evil-escape-key-sequence "jk")
-  (global-nlinum-mode)
-  (global-subword-mode)
-  (setq create-lockfiles nil)
-  (setq vc-follow-symlinks t)
-  (setq mouse-wheel-progressive-speed nil)
-  (spacemacs/toggle-maximize-frame-on)
-  (setup-visual-line-movement)
 (defun retry-until-abort (fn)
   (letrec
       ((timer
@@ -450,7 +436,12 @@ you should place your code here."
                               (lambda () (cancel-timer timer))))))))
   )
 
-  (setup-autosave)
+(defun setup-autocompletion ()
+  (setq company-tooltip-minimum 4)
+  )
+
+(defun setup-layers ()
+  (setup-autocompletion)
   (setup-csharp)
   (setup-eshell)
   (setup-haskell)
@@ -459,7 +450,27 @@ you should place your code here."
   (setup-purescript)
   (setup-rust)
   (setup-theme)
+  )
 
+(defun setup-scrolling ()
+  (setq mouse-wheel-progressive-speed nil)
+  )
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place your code here."
+  (setup-temp-file-creation)
+  (global-nlinum-mode)
+  (global-subword-mode)
+  (setup-word-wrap)
+  (setq evil-escape-key-sequence "jk")
+  (setq vc-follow-symlinks t)
+  (setup-scrolling)
+  (setup-layers)
   (add-hook
    'compilation-mode-hook
    (lambda ()
@@ -480,6 +491,7 @@ you should place your code here."
                (round (* 0.3 (frame-height)))))
             (funcall abort-fn)))))))
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
+  (spacemacs/toggle-maximize-frame-on)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
