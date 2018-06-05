@@ -437,6 +437,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   )
 
 (defun setup-autocompletion ()
+  (global-company-mode)
   (setq company-tooltip-minimum 4)
   )
 
@@ -479,13 +480,13 @@ you should place your code here."
         (dolist (compilation-buffer (get-buffers-with-major-mode 'compilation-mode))
           (let ((compilation-window (get-buffer-window compilation-buffer)))
             ;; Try setting either the height or the width (if more than two windows are visible, this may break down).
-                  (ignore-errors
-                    (set-window-dimension
-                     compilation-window
-                     'horizontal
-                     (round (* 0.25 (frame-width)))))
-                  (ignore-errors
-                    (set-window-dimension
+            (ignore-errors
+              (set-window-dimension
+               compilation-window
+               'horizontal
+               (round (* 0.25 (frame-width)))))
+            (ignore-errors
+              (set-window-dimension
                compilation-window
                'vertical
                (round (* 0.3 (frame-height)))))
@@ -503,7 +504,6 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(css-indent-offset 2)
  '(evil-want-Y-yank-to-eol nil)
- '(global-company-mode t)
  '(js-expr-indent-offset -2)
  '(js-indent-level 2)
  '(package-selected-packages
