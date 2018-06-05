@@ -57,6 +57,7 @@ values."
      syntax-checking
      themes-megapack
      theming
+     vimscript
      yaml
      )
    ;; List of additional packages that will be installed without being
