@@ -457,6 +457,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq mouse-wheel-progressive-speed nil)
   )
 
+(defun setup-titlebar ()
+  ;; https://github.com/d12frosted/homebrew-emacs-plus#important
+  (add-to-list 'default-frame-alist
+               '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist
+               '(ns-appearance . dark))
+  )
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -471,7 +479,9 @@ you should place your code here."
   (setq evil-escape-key-sequence "jk")
   (setq vc-follow-symlinks t)
   (setup-scrolling)
+  (setup-titlebar)
   (setup-layers)
+  (spacemacs/toggle-maximize-frame-on)
   (add-hook
    'compilation-mode-hook
    (lambda ()
@@ -492,7 +502,6 @@ you should place your code here."
                (round (* 0.3 (frame-height)))))
             (funcall abort-fn)))))))
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
-  (spacemacs/toggle-maximize-frame-on)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
