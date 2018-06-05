@@ -440,6 +440,15 @@ you should place your code here."
   (setq mouse-wheel-progressive-speed nil)
   (spacemacs/toggle-maximize-frame-on)
   (setup-visual-line-movement)
+(defun retry-until-abort (fn)
+  (letrec
+      ((timer
+        (run-at-time
+         0
+         0.05
+         `(lambda () (funcall ,fn
+                              (lambda () (cancel-timer timer))))))))
+  )
 
   (setup-autosave)
   (setup-csharp)
@@ -454,15 +463,11 @@ you should place your code here."
   (add-hook
    'compilation-mode-hook
    (lambda ()
-     (letrec
-         ((timer
-           (run-at-time
-            0
-            0.05
-            (lambda ()
-              (dolist (compilation-buffer (get-buffers-with-major-mode 'compilation-mode))
-                (let ((compilation-window (get-buffer-window compilation-buffer)))
-                  ;; Try setting either the height or the width (if more than two windows are visible, this may break down).
+     (retry-until-abort
+      (lambda (abort-fn)
+        (dolist (compilation-buffer (get-buffers-with-major-mode 'compilation-mode))
+          (let ((compilation-window (get-buffer-window compilation-buffer)))
+            ;; Try setting either the height or the width (if more than two windows are visible, this may break down).
                   (ignore-errors
                     (set-window-dimension
                      compilation-window
@@ -470,11 +475,10 @@ you should place your code here."
                      (round (* 0.25 (frame-width)))))
                   (ignore-errors
                     (set-window-dimension
-                     compilation-window
-                     'vertical
-                     (round (* 0.3 (frame-height)))))
-                  (cancel-timer timer))))))))))
-
+               compilation-window
+               'vertical
+               (round (* 0.3 (frame-height)))))
+            (funcall abort-fn)))))))
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
   )
 
