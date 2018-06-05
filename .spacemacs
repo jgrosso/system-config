@@ -375,6 +375,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 (defun setup-org ()
   (plist-put org-format-latex-options :scale 1.8)
+  (define-key evil-org-mode-map (kbd "s-l") 'org-toggle-latex-fragment)
   )
 
 (defun setup-purescript ()
