@@ -45,7 +45,6 @@ values."
      html
      markdown
      mu4e
-     nlinum
      (org :variables org-enable-github-support t)
      osx
      php
@@ -273,7 +272,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -473,7 +472,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setup-temp-file-creation)
-  (global-nlinum-mode)
   (global-subword-mode)
   (setup-word-wrap)
   (setq evil-escape-key-sequence "jk")
