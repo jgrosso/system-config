@@ -440,14 +440,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (evil-define-minor-mode-key 'motion 'visual-line-mode "k" 'evil-previous-visual-line)
   )
 
+(setq current-retry-timer nil)
 (defun retry-until-abort (fn)
-  (letrec
-      ((timer
+  (setq current-retry-timer
         (run-at-time
          0
          0.05
-         `(lambda () (funcall ,fn
-                              (lambda () (cancel-timer timer))))))))
+         #'(lambda (fn)
+             (funcall fn (lambda () (cancel-timer current-retry-timer))))
+         fn))
   )
 
 (defun setup-autocompletion ()
