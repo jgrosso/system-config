@@ -373,9 +373,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq message-sendmail-f-is-evil 't)
   )
 
+;; https://orgmode.org/manual/Breaking-down-tasks.html
+(defun org-auto-close-parent-todos (num-children-done num-children-not-done)
+  "Switch entry to DONE when all subentries are done, but to TODO otherwise."
+  (let (org-log-done org-log-states) ;; Disable logging
+    (org-todo (if (= num-children-not-done 0) "DONE" "TODO")))
+  )
+
 (defun setup-org ()
   (plist-put org-format-latex-options :scale 1.8)
   (define-key evil-org-mode-map (kbd "s-l") 'org-toggle-latex-fragment)
+  (add-hook 'org-after-todo-statistics-hook 'org-auto-close-parent-todos)
   )
 
 (defun setup-purescript ()
