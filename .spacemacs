@@ -373,6 +373,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq message-sendmail-f-is-evil 't)
   )
 
+(defun org-toggle-all-latex-fragments ()
+  (interactive)
+  (org-toggle-latex-fragment t)
+  )
+
 ;; https://orgmode.org/manual/Breaking-down-tasks.html
 (defun org-auto-close-parent-todos (num-children-done num-children-not-done)
   "Switch entry to DONE when all subentries are done, but to TODO otherwise."
@@ -382,7 +387,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 (defun setup-org ()
   (plist-put org-format-latex-options :scale 1.8)
-  (define-key evil-org-mode-map (kbd "s-l") 'org-toggle-latex-fragment)
+  (add-hook 'org-mode-hook (lambda ()
+                             (define-key org-mode-map (kbd "s-l") 'org-toggle-all-latex-fragments)))
   (add-hook 'org-after-todo-statistics-hook 'org-auto-close-parent-todos)
   )
 
