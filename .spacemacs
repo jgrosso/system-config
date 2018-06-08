@@ -468,8 +468,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setup-theme)
   )
 
+(defun setup-horizontal-scrolling ()
+  (global-set-key [wheel-left] 'scroll-right)
+  (global-set-key [wheel-right] 'scroll-left)
+  )
+
 (defun setup-scrolling ()
   (setq mouse-wheel-progressive-speed nil)
+  (setup-horizontal-scrolling)
   )
 
 (defun setup-titlebar ()
