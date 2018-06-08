@@ -387,6 +387,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 (defun setup-org ()
   (plist-put org-format-latex-options :scale 1.8)
+  (setq org-startup-with-latex-preview t)
   (add-hook 'org-mode-hook (lambda ()
                              (define-key org-mode-map (kbd "s-l") 'org-toggle-all-latex-fragments)))
   (add-hook 'org-after-todo-statistics-hook 'org-auto-close-parent-todos)
