@@ -47,3 +47,5 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 au VimLeave * set guicursor=a:ver1-blinkon0
+
+set mouse=a
