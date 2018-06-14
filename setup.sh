@@ -16,6 +16,7 @@ ln -s "$DIR/.zshrc" ~/.zshrc
 
 # Spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+cd ~/.emacs.d && git checkout develop && cd -
 ln -s "$DIR/.spacemacs" ~/.spacemacs
 
 # Git
