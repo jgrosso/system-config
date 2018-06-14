@@ -452,6 +452,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;; https://github.com/syl20bnr/spacemacs/issues/8853#issuecomment-302706114
+  (setq evil-want-abbrev-expand-on-insert-exit nil)
   )
 
 (defun setup-temp-file-creation ()
