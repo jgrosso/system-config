@@ -9,3 +9,5 @@ rm -rf ~/.emacs.d
 rm ~/.spacemacs
 
 rm ~/.gitconfig
+
+rm ~/Library/Application\ Support/Code/User/settings.json

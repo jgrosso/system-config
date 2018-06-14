@@ -21,3 +21,6 @@ ln -s "$DIR/.spacemacs" ~/.spacemacs
 
 # Git
 ln -s "$DIR/.gitconfig" ~/.gitconfig
+
+# VS Code
+ln -s "$DIR/vscode.json" ~/Library/Application\ Support/Code/User/settings.json

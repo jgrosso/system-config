@@ -1,0 +1,765 @@
+{
+    "auto-close-tag.activationOnLanguage": [
+        "html",
+        "jsx",
+        "php",
+        "xml"
+    ],
+
+    "css.lint.boxModel": "warning",
+    "css.lint.compatibleVendorPrefixes": "warning",
+    "css.lint.duplicateProperties": "error",
+    "css.lint.emptyRules": "error",
+    "css.lint.ieHack": "warning",
+    "css.lint.importStatement": "warning",
+    "css.lint.propertyIgnoredDueToDisplay": "error",
+    "css.lint.unknownVendorSpecificProperties": "warning",
+    "css.lint.vendorPrefix": "warning",
+    "css.lint.zeroUnits": "error",
+
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.inlineValues": true,
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.cursorBlinking": "smooth",
+    "editor.emptySelectionClipboard": false,
+    "editor.fontFamily": "'Input Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.minimap.enabled": true,
+    "editor.parameterHints": false,
+    "editor.renderControlCharacters": true,
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+        120
+    ],
+    "editor.scrollBeyondLastLine": false,
+    "editor.smoothScrolling": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+    "editor.wrappingIndent": "none",
+
+    "explorer.autoReveal": false,
+    "explorer.openEditors.visible": 0,
+
+    "extensions.autoUpdate": true,
+
+    "files.associations": {
+        "*.m": "matlab"
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/bower_components/**": true,
+        "**/node_modules/**": true,
+        "**/out/**": true
+    },
+
+    "flow.enabled": false,
+
+    "git.confirmSync": true,
+
+    "html.format.extraLiners": "",
+    "html.format.indentInnerHtml": true,
+
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "javascript.validate.enable": false,
+
+    "less.lint.boxModel": "warning",
+    "less.lint.compatibleVendorPrefixes": "warning",
+    "less.lint.duplicateProperties": "error",
+    "less.lint.emptyRules": "error",
+    "less.lint.ieHack": "warning",
+    "less.lint.importStatement": "warning",
+    "less.lint.propertyIgnoredDueToDisplay": "error",
+    "less.lint.unknownVendorSpecificProperties": "warning",
+    "less.lint.vendorPrefix": "warning",
+    "less.lint.zeroUnits": "error",
+
+    "markdown.preview.markEditorSelection": false,
+
+    "search.exclude": {
+        "**/bower_components": true,
+        "**/node_modules": true,
+        "**/out": true
+    },
+    "search.useIgnoreFiles": true,
+
+    "scss.lint.boxModel": "warning",
+    "scss.lint.compatibleVendorPrefixes": "warning",
+    "scss.lint.duplicateProperties": "error",
+    "scss.lint.emptyRules": "error",
+    "scss.lint.ieHack": "warning",
+    "scss.lint.importStatement": "warning",
+    "scss.lint.propertyIgnoredDueToDisplay": "error",
+    "scss.lint.unknownVendorSpecificProperties": "warning",
+    "scss.lint.vendorPrefix": "warning",
+    "scss.lint.zeroUnits": "error",
+
+    "telemetry.enableTelemetry": false,
+
+    "terminal.integrated.macOptionIsMeta": true,
+    "terminal.external.osxExec": "iTerm2.app",
+
+    "typescript.check.npmIsInstalled": false,
+    "typescript.useCodeSnippetsOnMethodSuggest": true,
+
+    "vim.easymotion": true, // https://raw.githubusercontent.com/VSpaceCode/VSpaceCode/master/settings.json
+    "vim.insertModeKeyBindings": [
+        // https://raw.githubusercontent.com/VSpaceCode/VSpaceCode/master/settings.json
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["<Up>"],
+            "after": [],
+            "commands": []
+        },
+        {
+            "before": ["<Down>"],
+            "after": [],
+            "commands": []
+        },
+        {
+            "before": ["<Left>"],
+            "after": [],
+            "commands": []
+        },
+        {
+            "before": ["<Right>"],
+            "after": [],
+            "commands": []
+        },
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        // https://raw.githubusercontent.com/VSpaceCode/VSpaceCode/master/settings.json
+        {
+            "before": [
+                "<leader>",
+                "<space>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "'"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.terminal.toggleTerminal",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "<tab>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.findInFiles",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "1"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.focusFirstEditorGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "2"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.focusSecondEditorGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "3"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.focusThirdEditorGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "b"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showAllEditors",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "d"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "n"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.nextEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "p"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.previousEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e",
+                "l"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.actions.view.problems",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "e"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.openGlobalSettings",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.openFileFolder",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "r"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.openRecent",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "s"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "t"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.view.explorer",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "y"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.copyPathOfActiveFile",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "s"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.view.scm",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "j",
+                "="
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.formatDocument",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "j",
+                "j"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "s"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "j",
+                "l"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "leader",
+                "b",
+                "d",
+                "j",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "j",
+                "w"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "leader",
+                "b",
+                "d",
+                "w"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "l",
+                "d"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeFolder",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "l"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.openFolder",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "p"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.openRecent",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeWindow",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q",
+                "r"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.reloadWindow",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q",
+                "q"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeWindow",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "s"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.findInFiles",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "e"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.rename",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "j"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.gotoSymbol",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "p"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.findInFiles",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "P"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.findInFilesWithSelectedText",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "T",
+                "F"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleFullScreen",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "T",
+                "m"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleMenuBar",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "T",
+                "s"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.selectTheme",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "T",
+                "t"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleActivityBarVisibility",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "v"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.smartSelect.grow",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "V"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.smartSelect.shrink",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "w"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.focusNextGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "W"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.focusPreviousGroup",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "vim.leader": "<space>", // https://raw.githubusercontent.com/VSpaceCode/VSpaceCode/master/settings.json
+    "vim.overrideCopy": false,
+
+    "vsicons.dontShowNewVersionMessage": true,
+
+    "window.restoreFullscreen": true,
+    "window.zoomLevel": 0,
+
+    "workbench.colorTheme": "Monokai",
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "newUntitledFile",
+}
