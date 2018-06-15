@@ -11,3 +11,5 @@ rm ~/.spacemacs
 rm ~/.gitconfig
 
 rm ~/Library/Application\ Support/Code/User/settings.json
+
+rm ~/.tmux.conf

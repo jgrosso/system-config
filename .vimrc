@@ -49,3 +49,7 @@ noremap <Right> <NOP>
 au VimLeave * set guicursor=a:ver1-blinkon0
 
 set mouse=a
+
+" See https://github.com/neovim/neovim/issues/4474#issuecomment-198757259.
+au InsertEnter,InsertChange * silent redraw!
+au VimEnter,InsertLeave * silent redraw!

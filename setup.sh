@@ -24,3 +24,6 @@ ln -s "$DIR/.gitconfig" ~/.gitconfig
 
 # VS Code
 ln -s "$DIR/vscode.json" ~/Library/Application\ Support/Code/User/settings.json
+
+# tmux
+ln -s "$DIR/.tmux.conf" ~/.tmux.conf
