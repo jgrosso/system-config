@@ -106,3 +106,5 @@ function set-title {
   DISABLE_AUTO_TITLE="true"
   echo -ne "\e]1;" $* "\a"
 }
+
+alias cls="clear && printf '\e[3J'"
