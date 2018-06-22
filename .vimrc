@@ -1,12 +1,9 @@
-syntax enable
 colorscheme monokai
 
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-filetype plugin indent on
-
 set number
 
 set cursorline
@@ -53,3 +50,29 @@ set mouse=a
 " See https://github.com/neovim/neovim/issues/4474#issuecomment-198757259.
 au InsertEnter,InsertChange * silent redraw!
 au VimEnter,InsertLeave * silent redraw!
+
+" See https://github.com/Shougo/dein.vim.
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/bundles')
+  call dein#begin('~/.vim/bundles')
+  call dein#add('~/.vim/bundles')
+
+  " Configure deoplete
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  let g:deoplete#enable_at_startup = 1
+
+  call dein#add('scrooloose/nerdtree')
+
+  call dein#end()
+  call dein#save_state()
+endif
+filetype plugin indent on
+syntax enable
+
