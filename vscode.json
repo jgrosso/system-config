@@ -124,7 +124,7 @@
             ]
         }
     ],
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<Up>"],
             "after": [],
