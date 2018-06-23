@@ -13,6 +13,7 @@ source ~/.zshrc
 ./homebrew-installer.sh
 
 # Neovim
+brew install neovim
 mkdir -p ~/.config/nvim
 ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
 
@@ -22,6 +23,7 @@ sh ./vim-dein-installer.sh ~/.vim/bundles
 vim "+call dein#install()" "+call dein#update()" +qall!
 
 # Spacemacs
+brew tap d12frosted/emacs-plus && brew install emacs-plus
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 cd ~/.emacs.d && git checkout develop && cd -
 ln -s "$DIR/.spacemacs" ~/.spacemacs
@@ -33,4 +35,5 @@ ln -s "$DIR/.gitconfig" ~/.gitconfig
 ln -s "$DIR/vscode.json" ~/Library/Application\ Support/Code/User/settings.json
 
 # tmux
+brew install tmux
 ln -s "$DIR/.tmux.conf" ~/.tmux.conf
