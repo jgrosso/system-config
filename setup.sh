@@ -4,15 +4,17 @@
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Zsh
+ln -s "$DIR/.zshrc" ~/.zshrc
+ln -s "$DIR/.zprofile" ~/.zprofile
+source ~/.zshrc
+
 # Neovim
 mkdir -p ~/.config/nvim
 ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
 
 # Vim
 ln -s "$DIR/.vimrc" ~/.vimrc
-
-# Zsh
-ln -s "$DIR/.zshrc" ~/.zshrc
 
 # Spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d

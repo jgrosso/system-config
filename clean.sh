@@ -1,9 +1,10 @@
 #!/bin/sh
 
+rm ~/.zshrc
+rm ~/.zprofile
+
 rm ~/.config/nvim/init.vim
 rm ~/.vimrc
-
-rm ~/.zshrc
 
 rm -rf ~/.emacs.d
 rm ~/.spacemacs
