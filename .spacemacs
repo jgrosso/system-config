@@ -548,6 +548,9 @@ in the dump."
   )
 
 (defun setup-org ()
+  ;; https://github.com/syl20bnr/spacemacs/issues/10944
+  (require 'ox)
+
   (plist-put org-format-latex-options :scale 1.8)
   (setq org-startup-with-latex-preview t)
   (add-hook 'org-mode-hook (lambda ()
