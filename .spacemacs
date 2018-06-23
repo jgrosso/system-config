@@ -537,7 +537,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   )
 
 (defun setup-purescript ()
-  (add-hook 'purescript-mode-hook 'turn-on-purescript-unicode-input-method)
+  (add-hook 'purescript-mode-hook (lambda ()
+                                    (turn-on-purescript-unicode-input-method)
+                                    (setq psc-ide-add-import-on-completion t)
+                                    (setq psc-ide-rebuild-on-save t)))
   )
 
 (defun setup-rust ()
@@ -637,6 +640,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
                '(ns-appearance . dark))
   )
 
+(defun setup-evil ()
+  (setq evil-want-Y-yank-to-eol nil)
+  (setq evil-escape-key-sequence "jk")
+  )
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -646,10 +654,10 @@ before packages are loaded."
   ;; https://github.com/syl20bnr/spacemacs/issues/10917#issuecomment-398161537
   (spacemacs-modeline/init-spaceline)
 
+  (setup-evil)
   (setup-temp-file-creation)
   (global-subword-mode)
   (setup-word-wrap)
-  (setq evil-escape-key-sequence "jk")
   (setq vc-follow-symlinks t)
   (setup-scrolling)
   (setup-titlebar)
