@@ -5,6 +5,7 @@ rm ~/.zprofile
 
 rm ~/.config/nvim/init.vim
 rm ~/.vimrc
+rm ~/.vim/bundles
 
 rm -rf ~/.emacs.d
 rm ~/.spacemacs

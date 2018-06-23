@@ -15,6 +15,8 @@ ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
 
 # Vim
 ln -s "$DIR/.vimrc" ~/.vimrc
+sh ./vim-dein-installer.sh ~/.vim/bundles
+vim "+call dein#install()" "+call dein#update()" +qall!
 
 # Spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
