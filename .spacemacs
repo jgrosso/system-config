@@ -473,6 +473,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 (defun setup-haskell ()
   (setq hindent-reformat-buffer-on-save t)
+  (setq haskell-tags-on-save t)
 
   ;; https://stackoverflow.com/questions/40400547/using-hlint-with-intero-on-emacs
   (require 'flycheck)
