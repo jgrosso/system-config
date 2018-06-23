@@ -9,6 +9,9 @@ ln -s "$DIR/.zshrc" ~/.zshrc
 ln -s "$DIR/.zprofile" ~/.zprofile
 source ~/.zshrc
 
+# Homebrew
+./homebrew-installer.sh
+
 # Neovim
 mkdir -p ~/.config/nvim
 ln -s "$DIR/init.vim" ~/.config/nvim/init.vim

@@ -3,6 +3,8 @@
 rm ~/.zshrc
 rm ~/.zprofile
 
+./homebrew-uninstaller.sh
+
 rm ~/.config/nvim/init.vim
 rm ~/.vimrc
 rm ~/.vim/bundles
