@@ -108,3 +108,7 @@ function set-title {
 }
 
 alias cls="clear && printf '\e[3J'"
+
+function hindent-project {
+  find -L {src,app,test} -type f | xargs hindent
+}
