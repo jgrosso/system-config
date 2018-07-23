@@ -112,3 +112,11 @@ alias cls="clear && printf '\e[3J'"
 function hindent-project {
   find -L {src,app,test} -type f | xargs hindent
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+# Adapted from https://www.reddit.com/r/vim/comments/7axmsb/i_cant_believe_how_good_fzf_is/dpdzzbb.
+function rgvim {
+  local choice=$(rg -il $argv | fzf -0 -1 --ansi --preview "cat {} | rg $argv --context 3")
+  [ $choice ] && vim $choice
+}
