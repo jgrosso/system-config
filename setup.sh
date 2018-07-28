@@ -18,6 +18,9 @@ mkdir -p ~/.config/nvim
 ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
 
 # Vim
+brew install fzf
+/usr/local/opt/fzf/install
+
 ln -s "$DIR/.vimrc" ~/.vimrc
 sh ./vim-dein-installer.sh ~/.vim/bundles
 vim "+call dein#install()" "+call dein#update()" +qall!
