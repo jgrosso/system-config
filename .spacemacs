@@ -49,6 +49,7 @@ This function should only modify configuration layer settings."
      (haskell :variables haskell-completion-backend 'intero)
      helm
      html
+     latex
      markdown
      mu4e
      (org :variables org-enable-github-support t)
@@ -537,7 +538,8 @@ in the dump."
 
 (defun org-toggle-all-latex-fragments ()
   (interactive)
-  (org-toggle-latex-fragment t)
+  (let ((current-prefix-arg '(16)))
+    (call-interactively 'org-toggle-latex-fragment))
   )
 
 ;; https://orgmode.org/manual/Breaking-down-tasks.html
@@ -551,10 +553,10 @@ in the dump."
   ;; https://github.com/syl20bnr/spacemacs/issues/10944
   (require 'ox)
 
-  (plist-put org-format-latex-options :scale 1.8)
+  (plist-put org-format-latex-options :scale 1.5)
   (setq org-startup-with-latex-preview t)
   (add-hook 'org-mode-hook (lambda ()
-                             (define-key org-mode-map (kbd "s-l") 'org-toggle-all-latex-fragments)))
+                             (define-key org-mode-map (kbd "H-l") 'org-toggle-all-latex-fragments)))
   (add-hook 'org-after-todo-statistics-hook 'org-auto-close-parent-todos)
   )
 
@@ -629,7 +631,13 @@ in the dump."
                            (setq c-default-style "k&r")
                            (setq c-basic-offset 4)
                            (c-set-offset 'arglist-close 0)
-                           (setq flycheck-clang-language-standard "gnu99"))))
+                           (setq flycheck-clang-language-standard "gnu99")))
+  )
+
+(defun setup-latex ()
+  ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Blang/latex
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+  )
 
 (defun setup-layers ()
   (setup-autocompletion)
@@ -637,6 +645,7 @@ in the dump."
   (setup-csharp)
   (setup-eshell)
   (setup-haskell)
+  (setup-latex)
   (setup-mu4e)
   (setup-org)
   (setup-purescript)
