@@ -12,8 +12,12 @@ source ~/.zshrc
 # Homebrew
 ./homebrew-installer.sh
 
+# Python 3
+brew install python; brew postinstall python3 # See https://stackoverflow.com/questions/34573159/how-to-install-pip3-on-my-mac/47004414#comment81687642_34574269.
+
 # Neovim
 brew install neovim
+pip3 install --user neovim
 mkdir -p ~/.config/nvim
 ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
 
