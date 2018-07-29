@@ -497,6 +497,12 @@ dump."
   (setq haskell-compile-command "stack ghc -- -Wall -ferror-spans -fforce-recomp -c %s")
 
   (add-hook 'haskell-mode-hook 'hindent-mode)
+
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode"gcd" 'haskell-go-to-type-class-definition)
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gd" 'haskell-go-to-data-constructor-definition)
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gf" 'haskell-go-to-function-definition)
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gci" 'haskell-go-to-type-class-instance)
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gt" 'haskell-go-to-type-definition)
   )
 
 (defun setup-mu4e ()
@@ -525,6 +531,36 @@ dump."
   (setq sendmail-program "/usr/local/bin/msmtp")
   (setq message-sendmail-extra-arguments '("--read-envelope-from"))
   (setq message-sendmail-f-is-evil 't)
+  )
+
+;; See https://alternativebit.fr/posts/haskell/ag.
+(defun haskell-go-to-function-definition (function-name)
+  (interactive "sFunction name: ")
+  (helm-project-search-for-regexp (concat "\\b" function-name "\\b\\s*::"))
+  )
+
+;; See https://alternativebit.fr/posts/haskell/ag.
+(defun haskell-go-to-type-definition (type-name)
+  (interactive "sType name: ")
+  (helm-project-search-for-regexp (concat "(data|newtype|type)\\s+\\b" type-name "\\b"))
+  )
+
+;; See https://alternativebit.fr/posts/haskell/ag.
+(defun haskell-go-to-type-class-definition (type-class-name)
+  (interactive "sType class name: ")
+  (helm-project-search-for-regexp (concat "class\\s+\\b" type-class-name "\\b"))
+  )
+
+(defun haskell-go-to-type-class-instance (instance-name)
+  (interactive "sInstance name: ")
+  (helm-project-search-for-regexp (concat "instance\\s+\\b" instance-name "\\b"))
+  )
+
+;; See https://alternativebit.fr/posts/haskell/ag.
+(defun haskell-maybe-go-to-data-constructor-definition (data-constructor-name)
+  "Search the current project for the specified data constructor. This is not guaranteed to work in all cases (e.g. when an ADT is defined inline)."
+  (interactive "sData constructor name: ")
+  (helm-project-search-for-regexp (concat "^\\s+(\\||=)\\s+\\b" data-constructor-name "\\b"))
   )
 
 (defun org-toggle-all-latex-fragments ()
@@ -660,6 +696,16 @@ dump."
                '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist
                '(ns-appearance . dark))
+  )
+
+(defun helm-project-search-for-regexp (pattern)
+  "Search the current project for the specific regular expression."
+  (interactive "sPattern: ")
+  (defun set-marked-input (dummy-escape)
+    pattern)
+  (advice-add 'helm-ag--marked-input :override #'set-marked-input)
+  (spacemacs/helm-project-do-rg-region-or-symbol)
+  (advice-remove 'helm-ag--marked-input #'set-marked-input)
   )
 
 (defun helm-project-do-rg-with-regexp ()
