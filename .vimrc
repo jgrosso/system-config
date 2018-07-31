@@ -24,7 +24,7 @@ set foldenable
 set foldlevelstart=99
 set foldnestmax=99
 set foldmethod=indent
-nnoremap <leader>f<Tab> za
+nnoremap <leader>f<TAB> za
 
 set autoindent
 
@@ -97,13 +97,13 @@ let g:airline_theme='base16'
 let g:ale_linters = {
 \    'javascript': ['eslint'],
 \}
-nnoremap <leader>en :ALENext<cr>
-nnoremap <leader>ep :ALEPrevious<cr>
+nnoremap <leader>en :ALENext<CR>
+nnoremap <leader>ep :ALEPrevious<CR>
 
-nnoremap <leader>ft :NERDTree<cr>
+nnoremap <leader>ft :NERDTree<CR>
 
 " Configure fuzzy finder
-nnoremap <leader>pf :FZF<cr>
+nnoremap <leader>pf :FZF<CR>
 " See https://github.com/junegunn/fzf.vim#advanced-customization<Paste>.
 command! -bang -nargs=* Rg
 	\ call fzf#vim#grep(
@@ -111,35 +111,37 @@ command! -bang -nargs=* Rg
 	\ 	<bang>0 ? fzf#vim#with_preview('up:60%')
   \				    : fzf#vim#with_preview('right:50%:hidden', '?'),
 	\	  <bang>0)
-nnoremap <leader>/ :Ag<cr>
+nnoremap <leader>/ :Ag<CR>
 
 set hidden
 
-nnoremap <silent> <leader>fs :write<cr>
+nnoremap <silent> <leader>fs :write<CR>
 
-nnoremap <silent> <leader>fed :edit ~/.vimrc<cr>
-nnoremap <silent> <leader>feR :source ~/.vimrc<cr>
+nnoremap <silent> <leader>fed :edit ~/.vimrc<CR>
+nnoremap <silent> <leader>feR :source ~/.vimrc<CR>
 
-nnoremap <silent> <leader>sc :noh<cr>
+nnoremap <silent> <leader>sc :noh<CR>
 
-nnoremap <silent> <leader><Tab> :e#<cr>
-nnoremap <silent> <leader>bd :e#<Bar>bw#<cr>
-nnoremap <leader>bb :buffers<cr>:b
+nnoremap <silent> <leader><TAB> :e#<CR>
+nnoremap <silent> <leader>bd :e#<BAR>bw#<CR>
+nnoremap <leader>bb :buffers<CR>:b
 
-nnoremap <silent> <leader>tn :tab new<cr>
-nnoremap <silent> <leader>td :close<cr>
+nnoremap <silent> <leader>tn :tab new<CR>
+nnoremap <silent> <leader>td :close<CR>
 
-nnoremap <silent> <leader>w2 :vs<cr>
-nnoremap <silent> <leader>w<Bar> :split<cr>
-nnoremap <silent> <leader>w<Tab> <C-w><C-w>
+nnoremap <silent> <leader>w2 :vs<CR>
+nnoremap <silent> <leader>w<BAR> :split<CR>
+nnoremap <silent> <leader>w<TAB> <C-w><C-w>
 nnoremap <silent> <leader>wj <C-w>j
 nnoremap <silent> <leader>wk <C-w>k
 nnoremap <silent> <leader>wh <C-w>h
 nnoremap <silent> <leader>wl <C-w>l
-nnoremap <silent> <leader>wd :close!<cr>
+nnoremap <silent> <leader>wd :close!<CR>
 
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-\><C-n> <Esc>
+tnoremap <ESC> <C-\><C-n>
+tnoremap <C-\><C-n> <ESC>
+
+inoremap <silent> <A-BS> <C-w>
 
 set clipboard=unnamedplus
 
@@ -148,7 +150,7 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-noremap <MiddleMouse> <nop>
-noremap <2-MiddleMouse> <nop>
-noremap <3-MiddleMouse> <nop>
-noremap <4-MiddleMouse> <nop>
+noremap <MiddleMouse> <NOP>
+noremap <2-MiddleMouse> <NOP>
+noremap <3-MiddleMouse> <NOP>
+noremap <4-MiddleMouse> <NOP>
