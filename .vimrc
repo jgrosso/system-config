@@ -97,8 +97,8 @@ let g:airline_theme='base16'
 let g:ale_linters = {
 \    'javascript': ['eslint'],
 \}
-nnoremap <leader>en :ALENext<CR>
-nnoremap <leader>ep :ALEPrevious<CR>
+nnoremap <silent> <leader>en :ALENext<CR>
+nnoremap <silent> <leader>ep :ALEPrevious<CR>
 
 nnoremap <leader>ft :NERDTree<CR>
 
@@ -130,7 +130,7 @@ nnoremap <silent> <leader>tn :tab new<CR>
 nnoremap <silent> <leader>td :close<CR>
 
 nnoremap <silent> <leader>w2 :vs<CR>
-nnoremap <silent> <leader>w<BAR> :split<CR>
+nnoremap <silent> <leader>w- :split<CR>
 nnoremap <silent> <leader>w<TAB> <C-w><C-w>
 nnoremap <silent> <leader>wj <C-w>j
 nnoremap <silent> <leader>wk <C-w>k
