@@ -24,7 +24,7 @@ set foldenable
 set foldlevelstart=99
 set foldnestmax=99
 set foldmethod=indent
-nnoremap <leader>f<TAB> za
+nnoremap <leader>f<Tab> za
 
 set autoindent
 
@@ -122,8 +122,8 @@ nnoremap <silent> <leader>feR :source ~/.vimrc<CR>
 
 nnoremap <silent> <leader>sc :noh<CR>
 
-nnoremap <silent> <leader><TAB> :e#<CR>
-nnoremap <silent> <leader>bd :e#<BAR>bw#<CR>
+nnoremap <silent> <leader><Tab> :e#<CR>
+nnoremap <silent> <leader>bd :e#<Bar>bw#<CR>
 nnoremap <leader>bb :buffers<CR>:b
 
 nnoremap <silent> <leader>tn :tab new<CR>
@@ -131,7 +131,7 @@ nnoremap <silent> <leader>td :close<CR>
 
 nnoremap <silent> <leader>w2 :vs<CR>
 nnoremap <silent> <leader>w- :split<CR>
-nnoremap <silent> <leader>w<TAB> <C-w><C-w>
+nnoremap <silent> <leader>w<Tab> <C-w><C-w>
 nnoremap <silent> <leader>wj <C-w>j
 nnoremap <silent> <leader>wk <C-w>k
 nnoremap <silent> <leader>wh <C-w>h
@@ -141,7 +141,7 @@ nnoremap <silent> <leader>wd :close!<CR>
 tnoremap <ESC> <C-\><C-n>
 tnoremap <C-\><C-n> <ESC>
 
-inoremap <silent> <A-BS> <C-w>
+inoremap <A-BS> <C-w>
 
 set clipboard=unnamedplus
 
