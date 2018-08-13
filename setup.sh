@@ -18,15 +18,14 @@ brew install python; brew postinstall python3 # See https://stackoverflow.com/qu
 # Neovim
 brew install neovim
 pip3 install --user neovim
-mkdir -p ~/.config/nvim
-ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim && ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
 
 # Vim
 brew install fzf
 /usr/local/opt/fzf/install
 
 ln -s "$DIR/.vimrc" ~/.vimrc
-sh ./vim-dein-installer.sh ~/.vim/bundles
+mkdir -p ~/.vim && sh ./vim-dein-installer.sh ~/.vim/bundles
 vim "+call dein#install()" "+call dein#update()" +qall!
 
 # Spacemacs
@@ -39,7 +38,7 @@ ln -s "$DIR/.spacemacs" ~/.spacemacs
 ln -s "$DIR/.gitconfig" ~/.gitconfig
 
 # VS Code
-ln -s "$DIR/vscode.json" ~/Library/Application\ Support/Code/User/settings.json
+mkdir -p ~/Library/Application\ Support/Code/User && ln -s "$DIR/vscode.json" ~/Library/Application\ Support/Code/User/settings.json
 
 # tmux
 brew install tmux
