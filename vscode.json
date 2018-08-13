@@ -25,7 +25,7 @@
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.cursorBlinking": "smooth",
     "editor.emptySelectionClipboard": false,
-    "editor.fontFamily": "'Input Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'Input Mono', 'Fira Code', Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
     "editor.formatOnPaste": true,
@@ -61,8 +61,6 @@
         "**/node_modules/**": true,
         "**/out/**": true
     },
-
-    "flow.enabled": false,
 
     "git.confirmSync": true,
 
@@ -752,14 +750,12 @@
     "vim.leader": "<space>", // https://raw.githubusercontent.com/VSpaceCode/VSpaceCode/master/settings.json
     "vim.overrideCopy": false,
 
-    "vsicons.dontShowNewVersionMessage": true,
-
     "window.restoreFullscreen": true,
     "window.zoomLevel": 0,
-
-    "workbench.colorTheme": "Monokai",
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "eq-material-theme-icons",
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Material Theme",
+    "materialTheme.fixIconsRunning": false,
 }
