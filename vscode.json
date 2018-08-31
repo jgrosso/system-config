@@ -27,7 +27,7 @@
     "editor.emptySelectionClipboard": false,
     "editor.fontFamily": "'Input Mono', 'Fira Code', Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "editor.fontSize": 12,
+    "editor.fontSize": 13,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
     "editor.minimap.enabled": true,
@@ -756,6 +756,6 @@
     "workbench.editor.enablePreview": false,
     "workbench.iconTheme": "eq-material-theme-icons",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Material Theme",
+    "workbench.colorTheme": "One Monokai",
     "materialTheme.fixIconsRunning": false,
 }
