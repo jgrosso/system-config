@@ -497,8 +497,7 @@ dump."
 
   (add-hook 'haskell-mode-hook 'hindent-mode)
 
-  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode"gcd" 'haskell-go-to-type-class-definition)
-  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gd" 'haskell-go-to-data-constructor-definition)
+  (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gcd" 'haskell-go-to-type-class-definition)
   (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gf" 'haskell-go-to-function-definition)
   (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gci" 'haskell-go-to-type-class-instance)
   (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "gt" 'haskell-go-to-type-definition)
