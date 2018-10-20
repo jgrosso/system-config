@@ -16,11 +16,14 @@ export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 export PATH="$PATH:$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Setup RVM (Ruby)
-export PATH="$PATH:$HOME/.rvm/bin"
-
+export PATH="$PATH:$HOME/.rvm/bin" 
 # Setup Stack (Haskell)
 export PATH="$PATH:$HOME/.local/bin"
 
 # Setup pdf-tools (Emacs)
 # See https://github.com/politza/pdf-tools#server-prerequisites
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+
+# Setup makeinfo (Remacs)
+# See https://github.com/Wilfred/remacs#getting-started.
+export PATH="/usr/local/opt/texinfo/bin:$PATH"
