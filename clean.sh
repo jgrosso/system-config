@@ -1,6 +1,7 @@
 #!/bin/sh
 
 rm ~/.zshrc
+rm -rf ~/.oh-my-zsh
 rm ~/.zprofile
 
 ./homebrew-uninstaller.sh

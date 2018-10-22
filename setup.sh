@@ -4,32 +4,60 @@
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Zsh
-ln -s "$DIR/.zshrc" ~/.zshrc
-ln -s "$DIR/.zprofile" ~/.zprofile
-source ~/.zshrc
+OS=""
+case "$(uname -a)" in
+  Darwin*)
+    OS="macOS"
+    ;;
+  Linux*)
+    OS="Linux"
+    ;;
+esac
 
 # Homebrew
-./homebrew-installer.sh
+if [[ OS == "macOS" ]]; then
+  ./homebrew-installer.sh
+fi
 
 # Python 3
-brew install python; brew postinstall python3 # See https://stackoverflow.com/questions/34573159/how-to-install-pip3-on-my-mac/47004414#comment81687642_34574269.
+case "$OS" in
+  macOS)
+    brew install python; brew postinstall python3 # See https://stackoverflow.com/questions/34573159/how-to-install-pip3-on-my-mac/47004414#comment81687642_34574269.
+    ;;
+  Linux)
+    sudo apt install python3 python-dev python-pip python3-dev python3-pip
+    ;;
+esac
 
 # Neovim
-brew install neovim
-pip3 install --user neovim
+case "$OS" in
+  macOS)
+    brew install neovim
+    pip3 install --user neovim
+    ;;
+  Linux)
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt update
+    sudo apt install neovim
+    ;;
+esac
 mkdir -p ~/.config/nvim && ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
 
+mkdir -p ~/.vim/colors
+ln -s "$DIR/monokai.vim" ~/.vim/colors/monokai.vim
+
 # Vim
-brew install fzf
-/usr/local/opt/fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 ln -s "$DIR/.vimrc" ~/.vimrc
 mkdir -p ~/.vim && sh ./vim-dein-installer.sh ~/.vim/bundles
 vim "+call dein#install()" "+call dein#update()" +qall!
 
 # Spacemacs
-brew tap d12frosted/emacs-plus && brew install emacs-plus
+if [[ OS == "macOS" ]]; then
+  brew tap d12frosted/emacs-plus; brew install emacs-plus
+fi
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 cd ~/.emacs.d && git checkout develop && cd -
 ln -s "$DIR/.spacemacs" ~/.spacemacs
@@ -38,8 +66,33 @@ ln -s "$DIR/.spacemacs" ~/.spacemacs
 ln -s "$DIR/.gitconfig" ~/.gitconfig
 
 # VS Code
-mkdir -p ~/Library/Application\ Support/Code/User && ln -s "$DIR/vscode.json" ~/Library/Application\ Support/Code/User/settings.json
+if [[ OS == "macOS" ]]; then
+  mkdir -p ~/Library/Application\ Support/Code/User && ln -s "$DIR/vscode.json" ~/Library/Application\ Support/Code/User/settings.json
+fi
 
 # tmux
-brew install tmux
+case "$OS" in
+  macOS)
+    brew install tmux
+    ;;
+  Linux)
+    sudo apt install tmux
+    ;;
+esac
 ln -s "$DIR/.tmux.conf" ~/.tmux.conf
+
+# Zsh
+case "$OS" in
+  macOS)
+    brew install zsh zsh-completions
+    ;;
+  Linux)
+    sudo apt install zsh
+    ;;
+esac
+
+sh -c ./oh-my-zsh-installer.sh
+ln -s "$DIR/.zshrc" ~/.zshrc
+ln -s "$DIR/.zprofile" ~/.zprofile
+chsh -s /usr/bin/zsh
+source ~/.zshrc
