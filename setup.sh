@@ -94,5 +94,6 @@ esac
 sh -c ./oh-my-zsh-installer.sh
 ln -s "$DIR/.zshrc" ~/.zshrc
 ln -s "$DIR/.zprofile" ~/.zprofile
+rm -rf ~/.oh-my-zsh/custom && ln -s "$DIR/zsh-theme" ~/.oh-my-zsh/custom
 chsh -s /usr/bin/zsh
 source ~/.zshrc
