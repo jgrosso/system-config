@@ -91,6 +91,14 @@ case "$OS" in
     ;;
 esac
 
+# See https://apple.stackexchange.com/a/302093/165765.
+case "$OS" in
+  macOS)
+    defaults write com.apple.dock workspaces-auto-swoosh -boolean NO
+    killall Dock
+    ;;
+esac
+
 sh -c ./oh-my-zsh-installer.sh
 ln -s "$DIR/.zshrc" ~/.zshrc
 ln -s "$DIR/.zprofile" ~/.zprofile
