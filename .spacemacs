@@ -750,6 +750,7 @@ before packages are loaded."
   (setup-titlebar)
   (setup-layers)
   (spacemacs/toggle-maximize-frame-on)
+  (global-set-key (kbd "H-r") 'font-lock-fontify-buffer)
   (add-hook
    'compilation-mode-hook
    (lambda ()
