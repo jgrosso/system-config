@@ -27,3 +27,8 @@ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 # Setup makeinfo (Remacs)
 # See https://github.com/Wilfred/remacs#getting-started.
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
+
+# Setup NVM (Node.JS)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
