@@ -754,7 +754,7 @@
     "window.zoomLevel": 0,
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "eq-material-theme-icons",
+    "workbench.iconTheme": "material-icon-theme",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.colorTheme": "One Monokai",
     "materialTheme.fixIconsRunning": false,
