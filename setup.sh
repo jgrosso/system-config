@@ -113,10 +113,29 @@ case "$OS" in
     ;;
 esac
 
-sudo apt install fonts-powerline
+sudo apt install -y fonts-powerline
 sh -c ./oh-my-zsh-installer.sh
 ln -s "$DIR/.zshrc" ~/.zshrc
 ln -s "$DIR/.zprofile" ~/.zprofile
 rm -rf ~/.oh-my-zsh/custom && ln -s "$DIR/zsh-theme" ~/.oh-my-zsh/custom
 chsh -s /usr/bin/zsh
+
+mkdir -p ~/.oh-my-zsh/custom/plugins
+cd ~/.oh-my-zsh/custom/plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+cd -
+
 source ~/.zshrc
+
+# Haskell
+case "$OS" in
+  macOS)
+    brew install haskell-stack
+    ;;
+  Linux)
+    sudo apt install -y haskell-stack
+    ;;
+esac
+stack upgrade --binary-only
+    
