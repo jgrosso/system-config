@@ -25,7 +25,7 @@ case "$OS" in
     brew install python; brew postinstall python3 # See https://stackoverflow.com/questions/34573159/how-to-install-pip3-on-my-mac/47004414#comment81687642_34574269.
     ;;
   Linux)
-    sudo apt install python3 python-dev python-pip python3-dev python3-pip
+    sudo apt install -y python3 python-dev python-pip python3-dev python3-pip
     ;;
 esac
 
@@ -38,7 +38,7 @@ case "$OS" in
   Linux)
     sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt update
-    sudo apt install neovim
+    sudo apt install -y neovim
     ;;
 esac
 mkdir -p ~/.config/nvim && ln -s "$DIR/init.vim" ~/.config/nvim/init.vim
@@ -61,14 +61,14 @@ case "$OS" in
     brew tap d12frosted/emacs-plus; brew install emacs-plus
     ;;
   Linux)
-    sudo apt install emacs
+    sudo apt install -y emacs
 
     wget -O SourceCodePro-Regular.ttf "https://github.com/adobe-fonts/source-code-pro/blob/release/TTF/SourceCodePro-Regular.ttf?raw=true"
     mkdir -p ~/.fonts
     mv SourceCodePro-Regular.ttf ~/.fonts
     sudo fc-cache
 
-    sudo apt install mu4e
+    sudo apt install -y mu4e
     ;;
 esac
 
@@ -90,7 +90,7 @@ case "$OS" in
     brew install tmux
     ;;
   Linux)
-    sudo apt install tmux
+    sudo apt install -y tmux
     ;;
 esac
 ln -s "$DIR/.tmux.conf" ~/.tmux.conf
@@ -101,7 +101,7 @@ case "$OS" in
     brew install zsh zsh-completions
     ;;
   Linux)
-    sudo apt install zsh
+    sudo apt install -y zsh
     ;;
 esac
 
