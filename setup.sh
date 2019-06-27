@@ -53,6 +53,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ln -s "$DIR/.vimrc" ~/.vimrc
 mkdir -p ~/.vim && sh ./vim-dein-installer.sh ~/.vim/bundles
 vim "+call dein#install()" "+call dein#update()" +qall!
+vim -c ":UpdateRemotePlugins" +qall!
 
 # Spacemacs
 if [[ OS == "macOS" ]]; then
