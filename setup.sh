@@ -56,9 +56,22 @@ vim "+call dein#install()" "+call dein#update()" +qall!
 vim -c ":UpdateRemotePlugins" +qall!
 
 # Spacemacs
-if [[ OS == "macOS" ]]; then
-  brew tap d12frosted/emacs-plus; brew install emacs-plus
-fi
+case "$OS" in
+  macOS)
+    brew tap d12frosted/emacs-plus; brew install emacs-plus
+    ;;
+  Linux)
+    sudo apt install emacs
+
+    wget -O SourceCodePro-Regular.ttf "https://github.com/adobe-fonts/source-code-pro/blob/release/TTF/SourceCodePro-Regular.ttf?raw=true"
+    mkdir -p ~/.fonts
+    mv SourceCodePro-Regular.ttf ~/.fonts
+    sudo fc-cache
+
+    sudo apt install mu4e
+    ;;
+esac
+
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 cd ~/.emacs.d && git checkout develop && cd -
 ln -s "$DIR/.spacemacs" ~/.spacemacs
@@ -100,6 +113,7 @@ case "$OS" in
     ;;
 esac
 
+sudo apt install fonts-powerline
 sh -c ./oh-my-zsh-installer.sh
 ln -s "$DIR/.zshrc" ~/.zshrc
 ln -s "$DIR/.zprofile" ~/.zprofile
