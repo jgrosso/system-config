@@ -1,7 +1,7 @@
 export PATH="$PATH:/usr/local/bin"
 
-# Setup Android
-export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+# Setup Android export
+# ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 
 # Setup Cargo (Rust)
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -40,6 +40,9 @@ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 # Setup makeinfo (Remacs)
 # See https://github.com/Wilfred/remacs#getting-started.
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
+
+# Setup MacPorts
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # Setup Nix
 export NIX_IGNORE_SYMLINK_STORE=1

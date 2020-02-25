@@ -84,7 +84,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 
 autoload -Uz compinit
 compinit
@@ -121,7 +123,14 @@ function rgvim {
   [ $choice ] && vim $choice
 }
 
-# Setup Nix
-. /Users/joshuagrosso/.nix-profile/etc/profile.d/nix.sh
+# Adapted from https://github.com/silvanocerza/dotfiles/blob/master/zsh/zshrc#L46-L55.
+FZF_CTRL_T_OPTS="--preview-window wrap --preview '
+  if [[ -f {} ]]; then
+    file --mime {} | grep -q \"text\/.*;\" && bat --color \"always\" {} || (tput setaf 1; file --mime {})
+  elif [[ -d {} ]]; then
+    exa -lh --color always {}
+  else;
+    tput setaf 1; echo FATAL ERROR
+  fi'"
 
 alias ocaml='rlwrap ocaml'

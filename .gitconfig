@@ -1,6 +1,7 @@
 [user]
 	email = jgrosso256@gmail.com
 	name = Joshua Grosso
+	signingKey = 33AFADEAC8DD90EE55C5EA9E929BCDF834EC4B47
 [alias]
 	co = checkout
 	cm = commit -am
@@ -14,3 +15,16 @@
 	default = simple
 [core]
 	editor = vim
+[rerere]
+	enabled = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+[gpg]
+	program = /usr/local/bin/gpg
