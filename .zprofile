@@ -40,3 +40,6 @@ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 # Setup makeinfo (Remacs)
 # See https://github.com/Wilfred/remacs#getting-started.
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
+
+# Setup OCaml
+eval $(opam env)

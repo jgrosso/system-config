@@ -120,3 +120,5 @@ function rgvim {
   local choice=$(rg -il $argv | fzf -0 -1 --ansi --preview "cat {} | rg $argv --context 3")
   [ $choice ] && vim $choice
 }
+
+alias ocaml='rlwrap ocaml'
