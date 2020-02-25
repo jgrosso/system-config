@@ -121,4 +121,7 @@ function rgvim {
   [ $choice ] && vim $choice
 }
 
+# Setup Nix
+. /Users/joshuagrosso/.nix-profile/etc/profile.d/nix.sh
+
 alias ocaml='rlwrap ocaml'

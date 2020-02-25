@@ -41,5 +41,8 @@ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 # See https://github.com/Wilfred/remacs#getting-started.
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
 
+# Setup Nix
+export NIX_IGNORE_SYMLINK_STORE=1
+
 # Setup OCaml
 eval $(opam env)
