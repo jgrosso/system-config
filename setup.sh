@@ -77,6 +77,9 @@ cd ~/.emacs.d && git checkout develop && cd -
 ln -s "$DIR/.spacemacs" ~/.spacemacs
 ln -s "$DIR/spacemacsPrivate" ~/.emacs.d/private
 
+# Personal wiki
+ln -s "$DIR/org-wiki" ~/org-wiki
+
 # Git
 ln -s "$DIR/.gitconfig" ~/.gitconfig
 

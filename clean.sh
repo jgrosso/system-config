@@ -13,6 +13,8 @@ rm ~/.vim/bundles
 rm -rf ~/.emacs.d
 rm ~/.spacemacs
 
+rm -rf ~/org-wiki
+
 rm ~/.gitconfig
 
 rm ~/Library/Application\ Support/Code/User/settings.json
