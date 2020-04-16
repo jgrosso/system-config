@@ -32,23 +32,15 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(ocaml
-     auto-completion
-     c-c++
-     clojure
+   '(;; auto-completion
      coq
-     csharp
      csv
      dash
      emacs-lisp
-     games
      git
-     go
      (haskell :variables haskell-completion-backend 'dante)
      helm
-     html
      idris
-     javascript
      latex
      lsp
      markdown
@@ -57,10 +49,8 @@ This function should only modify configuration layer settings."
      (org :variables org-enable-github-support t org-enable-reveal-js-support t)
      osx
      pdf
-     php
      prolog
      purescript
-     ruby-on-rails
      rust
      (shell :variables shell-default-shell 'eshell)
      spotify
@@ -68,7 +58,6 @@ This function should only modify configuration layer settings."
      themes-megapack
      theming
      treemacs
-     typescript
      (unicode-fonts :variables unicode-fonts-force-multi-color-on-mac t)
      vimscript
      yaml
@@ -171,6 +160,11 @@ It should only modify the values of Spacemacs settings."
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
 
+   ;; If non-nil show the version string in the Spacemacs buffer. It will
+   ;; appear as (spacemacs version)@(emacs version)
+   ;; (default t)
+   dotspacemacs-startup-buffer-show-version t
+
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -247,8 +241,10 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-major-mode-leader-key ","
 
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m")
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   ;; (default "C-M-m" for terminal mode, "<M-return>" for GUI mode).
+   ;; Thus M-RET should work as leader key in both GUI and terminal modes.
+   ;; C-M-m also should work in terminal mode, but not in GUI mode.
+   dotspacemacs-major-mode-emacs-leader-key (if window-system "<M-return>" "C-M-m")
 
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
@@ -445,6 +441,13 @@ It should only modify the values of Spacemacs settings."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'trailing
+
+   ;; If non nil activate `clean-aindent-mode' which tries to correct
+   ;; virtual indentation of simple modes. This can interfer with mode specific
+   ;; indent handling like has been reported for `go-mode'.
+   ;; If it does deactivate it here.
+   ;; (default t)
+   dotspacemacs-use-clean-aindent-mode t
 
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
@@ -912,8 +915,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(fill-column 100)
  '(lsp-ui-sideline-show-diagnostics nil)
  '(lsp-ui-sideline-show-hover nil)
+ '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
     (utop tuareg caml ocp-indent helm-gtags ggtags flycheck-ocaml merlin dune counsel-gtags counsel swiper ivy dante elisp-format web-completion-data company-reftex ac-php-core xcscope company-ghci company-math math-symbol-lists attrap helm-org chocolate-theme ediprolog srefactor idris-mode prop-menu selectric-mode lsp-ui lsp-treemacs helm-lsp cquery company-lsp ccls company-ghc ghc lcr tide typescript-mode flyspell-correct-helm flyspell-correct auto-dictionary zenburn-theme zen-and-art-theme yasnippet-snippets yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify w3m volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unicode-fonts underwater-theme ujelly-theme typit twilight-theme twilight-bright-theme twilight-anti-bright-theme treemacs-projectile treemacs-evil toxi-theme toml-mode toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon sunny-day-theme sudoku sublime-themes subatomic256-theme subatomic-theme string-inflection spotify spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe reverse-theme reveal-in-osx-finder restart-emacs rebecca-theme rbenv rainbow-delimiters railscasts-theme racer purple-haze-theme pug-mode psci psc-ide proof-general projectile-rails professional-theme prettier-js popwin planet-theme phpunit phpcbf php-extras php-auto-yasnippets phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pdf-tools password-generator paradox pacmacs ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme omnisharp oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme nameless mustang-theme multi-term mu4e-maildirs-extension mu4e-alert move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minitest minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum livid-mode link-hint light-soap-theme launchctl kaolin-themes json-navigator json-mode js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme intero inkpot-theme indent-guide impatient-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-spotify-plus helm-rtags helm-purpose helm-projectile helm-org-rifle helm-mu helm-mode-manager helm-make helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme haskell-snippets gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md gandalf-theme fuzzy font-lock+ flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-haskell flx-ido flatui-theme flatland-theme fill-column-indicator feature-mode farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu espresso-theme eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dracula-theme dotenv-mode doom-themes doom-modeline django-theme disaster diminish dash-at-point darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cyberpunk-theme csv-mode counsel-projectile company-web company-tern company-tabnine company-statistics company-rtags company-php company-go company-coq company-cabal company-c-headers company-auctex column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized cmm-mode clues-theme clojure-snippets clojure-cheatsheet clean-aindent-mode clang-format cider-eval-sexp-fu chruby cherry-blossom-theme centered-cursor-mode cargo busybee-theme bundler bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent ag afternoon-theme ace-link ace-jump-helm-line ac-ispell 2048-game)))
@@ -930,7 +935,7 @@ This function is called at the very end of Spacemacs initialization."
      (javascript-backend . lsp)
      (go-backend . go-mode)
      (go-backend . lsp))))
- '(shell-pop-autocd-to-working-dir nil))
+ '(shell-pop-autocd-to-working-dir nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
