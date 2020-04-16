@@ -903,18 +903,20 @@ before packages are loaded."
       (lambda (abort-fn)
         (dolist (compilation-buffer (get-buffers-with-major-mode 'compilation-mode))
           (let ((compilation-window (get-buffer-window compilation-buffer)))
-            ;; Try setting either the height or the width (if more than two windows are visible, this may break down).
-            (ignore-errors
-              (set-window-dimension
-               compilation-window
-               'horizontal
-               (round (* 0.25 (frame-width)))))
-            (ignore-errors
-              (set-window-dimension
-               compilation-window
-               'vertical
-               (round (* 0.3 (frame-height)))))
-            (funcall abort-fn)))))))
+            (if compilation-window
+                (progn
+                  ;; Try setting either the height or the width (if more than two windows are visible, this may break down).
+                  (ignore-errors
+                    (set-window-dimension
+                     compilation-window
+                     'horizontal
+                     (round (* 0.25 (frame-width)))))
+                  (ignore-errors
+                    (set-window-dimension
+                     compilation-window
+                     'vertical
+                     (round (* 0.3 (frame-height)))))
+                  (funcall abort-fn)))))))))
 
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
   )
