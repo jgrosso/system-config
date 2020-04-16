@@ -44,7 +44,7 @@ This function should only modify configuration layer settings."
      latex
      lsp
      markdown
-     mu4e
+     ;; mu4e [If re-enabling, uncomment `setup-mu4e' in `setup-layers']
      multiple-cursors
      (org :variables org-enable-github-support t org-enable-reveal-js-support t)
      osx
@@ -801,7 +801,7 @@ dump."
   (setup-haskell)
   (setup-helm)
   (setup-latex)
-  (setup-mu4e)
+  ;; (setup-mu4e) [If re-enabling, uncomment `mu4e' in `dotspacemacs-configuration-layers']
   (setup-org)
   (setup-purescript)
   (setup-rust)
