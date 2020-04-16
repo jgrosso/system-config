@@ -77,9 +77,6 @@ cd ~/.emacs.d && git checkout develop && cd -
 ln -s "$DIR/.spacemacs" ~/.spacemacs
 ln -s "$DIR/spacemacsPrivate" ~/.emacs.d/private
 
-# Personal wiki
-ln -s "$DIR/org-wiki" ~/org-wiki
-
 # Git
 ln -s "$DIR/.gitconfig" ~/.gitconfig
 
@@ -142,4 +139,14 @@ case "$OS" in
     ;;
 esac
 stack upgrade --binary-only
-    
+
+# Personal wiki
+git clone https://gitlab.com/jgrosso/personal-wiki.git ~/org-wiki
+case "$OS" in
+  macOS)
+    ln -S "$DIR/backup-org-wiki.sh" ~/backup-org-wiki.sh
+    ln -S "$DIR/com.joshuagrosso.backupOrgWiki.plist" ~/Library/LaunchAgents/com.joshuagrosso.backupOrgWiki.plist
+    launchctl load ~/Library/LaunchAgents/com.joshuagrosso.backupOrgWiki.plist
+    launchctl start com.joshuagrosso.backupOrgWiki
+    ;;
+esac

@@ -589,20 +589,103 @@ dump."
 
 (setq org-wiki-location (concat (getenv "HOME") "/org-wiki/"))
 
+(setq org-wiki-page-extension ".org")
+
+(setq org-wiki-file-path-word-separator "-")
+
+;; Inverse of `org-wiki-file-path-to-page-name'.
 (defun org-wiki-page-name-to-file-path (page-name)
   (concat org-wiki-location
-          (replace-regexp-in-string " " "-" page-name)
-          ".org")
+          (replace-regexp-in-string " " org-wiki-file-path-word-separator page-name)
+          org-wiki-page-extension)
+  )
+
+;; Inverse of `org-wiki-page-name-to-file-path'.
+(defun org-wiki-file-path-to-page-name (file-path)
+  (replace-regexp-in-string org-wiki-file-path-word-separator
+                            " "
+                            (string-remove-suffix org-wiki-page-extension file-path))
+  )
+
+;; Inverse of `org-wiki-title-to-page-name'
+(defun org-wiki-page-name-to-title (page-name)
+  (concat "* " page-name)
+  )
+
+;; Inverse of `org-wiki-page-name-to-title'
+(defun org-wiki-title-to-page-name (page-name)
+  (string-remove-prefix "* " page-name)
+  )
+
+(defun org-wiki-page-p (file-path)
+  (string-suffix-p org-wiki-page-extension file-path)
+  )
+
+(defun org-wiki-files ()
+  (seq-filter #'org-wiki-page-p (directory-files org-wiki-location))
+  )
+
+(defun org-wiki-page-names ()
+  (mapcar #'org-wiki-file-path-to-page-name (org-wiki-files))
+  )
+
+(defmacro org-wiki-interactive-page-name ()
+  '(interactive
+    (list
+     (completing-read "Page name: " (org-wiki-page-names))))
   )
 
 (defun org-wiki-insert-link (page-name)
-  (interactive "sPage name: ")
+  (org-wiki-interactive-page-name)
   (org-insert-link nil (org-wiki-page-name-to-file-path page-name) page-name)
   )
 
 (defun org-wiki-open-page (page-name)
-  (interactive "sPage name: ")
-  (find-file (org-wiki-page-name-to-file-path page-name))
+  (org-wiki-interactive-page-name)
+  (let ((file-path (org-wiki-page-name-to-file-path page-name)))
+    (unless (file-exists-p file-path)
+      (with-temp-file file-path
+        (insert (org-wiki-page-name-to-title page-name))))
+    (find-file file-path))
+  )
+
+(defun org-wiki-verify-correct-title ()
+  (save-excursion
+    (goto-char (point-min))
+    (let* ((file-path (string-remove-prefix org-wiki-location buffer-file-name))
+           (page-name (org-wiki-file-path-to-page-name file-path))
+           (actual-title-line (buffer-substring-no-properties
+                               (line-beginning-position)
+                               (line-end-position)))
+           (expected-title-line (org-wiki-page-name-to-title page-name)))
+      (unless (string= actual-title-line expected-title-line)
+        (error "In-page title does not match page name!"))))
+  )
+
+(defun org-wiki-rename-current-page (new-page-name)
+  (org-wiki-interactive-page-name)
+  (org-wiki-verify-correct-title)
+  (let ((new-file-path (org-wiki-page-name-to-file-path new-page-name)))
+    (save-excursion
+      (goto-char (point-min))
+      (kill-line)
+      (insert (org-wiki-page-name-to-title new-page-name)))
+    (rename-file (buffer-file-name) new-file-path)
+    (set-visited-file-name new-file-path t t)
+    (save-buffer))
+  )
+
+(defun setup-org-wiki ()
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "wl" 'org-wiki-insert-link)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "wr" 'org-wiki-rename-current-page)
+  (global-set-key (kbd "H-o") #'org-wiki-open-page)
+
+  (add-hook 'after-save-hook
+            (lambda ()
+              (let ((file-path (buffer-file-name)))
+                (when (string-prefix-p org-wiki-location file-path)
+                  (shell-command (concat "git add " file-path " && "
+                                         "git commit --no-gpg-sign -m 'org-wiki change: " (file-name-nondirectory file-path) "'"))))))
   )
 
 (defun setup-org ()
@@ -611,11 +694,17 @@ dump."
 
   (plist-put org-format-latex-options :scale 1.5)
   (setq org-startup-with-latex-preview t)
-  (add-hook 'org-mode-hook (lambda ()
-                             (define-key org-mode-map (kbd "H-l") 'org-toggle-all-latex-fragments)))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (define-key org-mode-map (kbd "H-l") 'org-toggle-all-latex-fragments)
+              (local-set-key (kbd "RET") 'newline-and-indent)
+              (local-set-key (kbd "H-f")
+                             (lambda ()
+                               (interactive)
+                               (fill-region (point-min) (point-max))
+                               (evil-indent (point-min) (point-max))))))
   (add-hook 'org-after-todo-statistics-hook 'org-auto-close-parent-todos)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode "l" 'org-wiki-insert-link)
-  (global-set-key (kbd "H-o") #'org-wiki-open-page)
+  (setup-org-wiki)
   )
 
 (defun setup-helm ()
