@@ -952,6 +952,7 @@ This function is called at the very end of Spacemacs initialization."
      (go-backend . go-mode)
      (go-backend . lsp))))
  '(shell-pop-autocd-to-working-dir nil)
+ '(yas-snippet-dirs (quote ("/Users/joshuagrosso/.emacs.d/private/snippets/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
