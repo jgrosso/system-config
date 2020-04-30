@@ -24,14 +24,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Setup Cabal (Haskell)
-GHC_INSTALLS="$(dirname $(dirname $(dirname $(stack exec -- which ghc))))"
-for ghc_install in $GHC_INSTALLS/ghc-*; do
-    export PATH="$ghc_install/bin:$PATH"
-done
 export PATH="$HOME/.cabal/bin:$PATH"
-
-# Setup Stack (Haskell)
-export PATH="$PATH:$HOME/.local/bin"
 
 # Setup pdf-tools (Emacs)
 # See https://github.com/politza/pdf-tools#server-prerequisites
