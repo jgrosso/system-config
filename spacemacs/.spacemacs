@@ -687,7 +687,7 @@ dump."
             (lambda ()
               (let ((file-path (buffer-file-name)))
                 (when (string-prefix-p org-wiki-location file-path)
-                  (shell-command (concat "git add " file-path " && "
+                  (shell-command (concat "git add '" file-path "' && "
                                          "git commit --no-gpg-sign -m 'org-wiki change: " (file-name-nondirectory file-path) "'"))))))
   )
 
