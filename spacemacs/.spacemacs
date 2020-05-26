@@ -40,6 +40,7 @@ This function should only modify configuration layer settings."
      git
      (haskell :variables haskell-completion-backend 'dante)
      helm
+     html
      idris
      latex
      lsp
@@ -793,9 +794,23 @@ dump."
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
 
+(defun setup-coq ()
+  (define-key
+    evil-motion-state-map
+    (kbd "[ ]")
+    (lambda ()
+      (interactive)
+      (proof-assert-next-command-interactive)
+      (when (string-suffix-p "column=0" (what-cursor-position))
+        (previous-line)
+        (move-end-of-line nil))))
+  (define-key evil-motion-state-map (kbd "] [") 'proof-undo-last-successful-command)
+  )
+
 (defun setup-layers ()
   (setup-autocompletion)
   (setup-c)
+  (setup-coq)
   (setup-csharp)
   (setup-eshell)
   (setup-haskell)
@@ -878,12 +893,22 @@ dump."
   (add-hook 'term-mode-hook #'eterm-256color-mode)
   )
 
+;; https://github.com/syl20bnr/spacemacs/issues/6197#issuecomment-224248780
+(defun reset-default-font ()
+  (unless (spacemacs/set-default-font dotspacemacs-default-font)
+    (spacemacs-buffer/warning
+     "Cannot find any of the specified fonts (%s)! Font settings may not be correct."
+     (mapconcat 'car dotspacemacs-default-font ", ")))
+  )
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (delete-selection-mode t)
+  (add-hook 'focus-in-hook #'reset-default-font)
   (setup-evil)
   (setup-temp-file-creation)
   (global-subword-mode)
@@ -919,6 +944,10 @@ before packages are loaded."
                   (funcall abort-fn)))))))))
 
   (add-hook 'text-mode-hook (lambda () (setq word-wrap t)))
+
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (delete-other-windows)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
